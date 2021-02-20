@@ -101,13 +101,21 @@ let clickRun = function() {
                     else {
                         countTime+=processings[0][2];
                         process.push([processings[0][0],processings[0][2]]);      
-                        processings.shift();     
+                        processings.shift();
+                        let exist = true;
                         processings.forEach(function(value){
                             if(value[1] <= countTime){
                                 store.push(value);
                                 processings.shift();
+                                exist = false;
                             }
                         })
+                        if(exist == true && processings[0][1] > countTime){
+                            process.push(['None',processings[0][1]]);
+                            countTime += (processings[0][1] - countTime);
+                            store.push(processings[0]);
+                            processings.shift();
+                        }
                     }
                     while(processings.length !== 0 || store.length !== 0){
                         if(store[0][2] > quantum){
@@ -170,7 +178,12 @@ let clickRun = function() {
                                     }
                                 }
                             }
-                            
+                           if(store.length == 0 && processings.length != 0 && processings[0][1] > countTime){
+                                process.push(['None',processings[0][1]]);
+                                store.push(processings[0]);
+                                countTime = processings[0][1];
+                                processings.shift();
+                            }  
                         }
                 
                     }
