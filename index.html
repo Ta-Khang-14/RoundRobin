@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div class="logo">Round Robin</div>
+        <div class="form">
+            <input type="text" name='process' id='process' placeholder="Nhập số tiến trình">
+            <input type="text" name='process' id='quantum' placeholder="Quantum">           
+        </div>
+        <div class="btn-form">
+            <div class="btn startBtn">Bắt đầu</div>
+            <div class="btn reset">Reset</div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="display">
+            <div class="header-title">Lập lịch CPU</div>
+            <div class="gantt">
+                <H3>GANTT</H3>
+                <div class="gantt-box">
+                </div>
+            </div>
+            <div class="countTime">
+                <div class="waittingTime">
+                    <h2>Thời gian chờ</h2>
+                    
+                </div>
+                <div class="processTime">
+                    <h2>Thời gian xử lý</h2>
+                  
+                </div>
+            </div>
+        </div>
+        <div class="input-data">
+            <div class="header-title">Nhập dữ liệu</div>
+            <div class="title">
+                <div>Tiến trình</div>
+                <div>Txh</div>
+                <div>CPUb</div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+
+</body>
+</html>
