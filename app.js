@@ -238,7 +238,7 @@ let clickRun = function() {
                     waitingTimeLine.innerText = `Thời gian chờ của ${array[i][0]}: ${array[i][3]}`;
                     let processTimeLine = document.createElement('div');
                     processTimeElement.appendChild(processTimeLine);
-                    processTimeLine.innerText = `Thời gian chờ của ${array[i][0]}: ${array[i][4]}`;
+                    processTimeLine.innerText = `Thời gian xử lý của ${array[i][0]}: ${array[i][4]}`;
                 }
 
             }
