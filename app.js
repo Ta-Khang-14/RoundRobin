@@ -63,6 +63,7 @@ let clickRun = function() {
                     if(processings[0][2] > quantum){
                         countTime += quantum;
                         process.push([processings[0][0],countTime]);
+                        console.log(countTime);
                         processings[0][2] -= quantum;
                         // countTime += quantum;
                         let check = true;
@@ -90,7 +91,7 @@ let clickRun = function() {
                     }
                     else {
                         countTime+=processings[0][2];
-                        process.push([processings[0][0],processings[0][2]]);      
+                        process.push([processings[0][0],countTime]);      
                         processings.shift();
                         let exist = true;
                         processings.forEach(function(value){
