@@ -36,21 +36,7 @@ let clickRun = function() {
                     processings.push([`P${i+1}`,listWaitingTime[i].value * 1,listCPUtime[i].value * 1]);
                     array.push([`P${i+1}`,listWaitingTime[i].value * 1,listCPUtime[i].value * 1]);
                 }
-                // let processings = [
-                //     ['P1',0,11],
-                //     ['P2',3,7],
-                //     ['P3',8,19],
-                //     ['P4',13,4],
-                //     ['P5',17,9]
-                // ]
                 let start = ['Start',0];
-                // let array = [
-                //     ['P1',0,11],
-                //     ['P2',3,7],
-                //     ['P3',8,19],
-                //     ['P4',13,4],
-                //     ['P5',17,9]
-                // ]
                 // sap xep theo thu tu tang dan cua thoi gian xuat hien
                 processings.sort(function(array1, array2){
                     if(array1[1] == array2[1]){
@@ -66,15 +52,19 @@ let clickRun = function() {
                 });
                 let store = [];
                 let process = [];
+                let add = 0;
                 let quantum = document.querySelector('#quantum').value * 1;
                 let countTime = processings[0][1];
-                
+                if(array[0][1] != 0) {
+                    add = processings[0][1];
+                }
                 // thuật toán round robin
                 let roundRobin = function(){
                     if(processings[0][2] > quantum){
-                        process.push([processings[0][0],quantum]);
-                        processings[0][2] -= quantum;
                         countTime += quantum;
+                        process.push([processings[0][0],countTime]);
+                        processings[0][2] -= quantum;
+                        // countTime += quantum;
                         let check = true;
                         for(let i = 1 ; i < processings.length ; i++){
                             if(processings[i][1] < countTime){
@@ -178,7 +168,7 @@ let clickRun = function() {
                                     }
                                 }
                             }
-                           if(store.length == 0 && processings.length != 0 && processings[0][1] > countTime){
+                            if(store.length == 0 && processings.length != 0 && processings[0][1] > countTime){
                                 process.push(['None',processings[0][1]]);
                                 store.push(processings[0]);
                                 countTime = processings[0][1];
@@ -187,7 +177,11 @@ let clickRun = function() {
                         }
                 
                     }
+                    if(add) {
+                        process.unshift(['None',add]);
+                    }
                     process.unshift(start);
+                    console.log(process)
                 }
                 
                 roundRobin();
